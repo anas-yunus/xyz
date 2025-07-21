@@ -10,3 +10,4 @@ tesserocr
 pymupdf
 pytesseract
 sentence-transformers
+openai

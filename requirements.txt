@@ -8,4 +8,4 @@ pillow
 pdf2image
 tesserocr
 pymupdf
-# add other packages you use like pytesseract or sentence-transformers if needed
+pytesseract# add other packages you use like pytesseract or sentence-transformers if needed

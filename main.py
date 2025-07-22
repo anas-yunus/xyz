@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import requests
 import tempfile
 import os
+import uvicorn  # ✅ needed to run via Python
 
 from ocr.ocr_engine import smart_pdf_ocr
 from chunking.chunker import chunk_text
@@ -74,3 +75,13 @@ async def run_document_pipeline(
 
     finally:
         os.remove(tmp_path)  # Clean up temp file
+
+# --- Health Check ---
+@app.get("/")
+def health_check():
+    return {"status": "ok"}
+
+# --- Run Uvicorn manually when executing as script ---
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Render provides $PORT
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
